@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">NotepadExample</string>
+
+    <!-- Action -->
+    <string name="action_scan">Scan</string>
 </resources>
