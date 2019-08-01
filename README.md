@@ -45,3 +45,21 @@ NotepadConnector.connect(context, result, authToken)
 // ...
 NotepadConnector.disconnect()
 ```
+
+## Claim notepad
+
+Claim with `authToken`, the parameter of `NotepadConnector.connect`
+
+```kotlin
+notepadClient.claimAuth({
+    println("claimAuth complete")
+}, {
+    println("claimAuth error $it")
+})
+// ...
+notepadClient.disclaimAuth({
+    println("disclaimAuth complete")
+}, {
+    println("disclaimAuth error $it")
+})
+```

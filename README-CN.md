@@ -46,3 +46,21 @@ NotepadConnector.connect(context, result, authToken)
 // ...
 NotepadConnector.disconnect()
 ```
+
+## 绑定设备
+
+用`NotepadConnector.connect`的`authToken`绑定设备
+
+```kotlin
+notepadClient.claimAuth({
+    println("claimAuth complete")
+}, {
+    println("claimAuth error $it")
+})
+// ...
+notepadClient.disclaimAuth({
+    println("disclaimAuth complete")
+}, {
+    println("disclaimAuth error $it")
+})
+```
