@@ -228,4 +228,14 @@ notepadClient.setAutoLockTime(duration, {
 
 ## Upgrade firmware
 
-TODO
+Upgrade notepad firmware with `*.srec` file
+
+```kotlin
+notepadClient.upgrade("path", version, {
+    println("upgrade progress $it")
+}, {
+    println("upgrade complete")
+}, {
+    println("upgrade error $it")
+})
+```
