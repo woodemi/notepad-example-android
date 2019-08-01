@@ -71,11 +71,11 @@ notepadClient.disclaimAuth({
 
 - NotepadMode.Common
 
-    Notepad saves only `NotePenPointer` with positive pressure into *offline memo* 
+    Notepad saves only `NotePenPointer` with positive pressure & accurate timestamp, into **offline memo** 
     
 - NotepadMode.Sync
 
-    Notepad notify each `NotePenPointer`, positive or not, to connected *mobile device*
+    Notepad notify every `NotePenPointer`, positive or not, without timestamp, to connected **mobile device**
 
 Notepad is always `NotepadMode.Common` (connected or disconnected), unless `setMode` after connected
 
@@ -102,7 +102,63 @@ notepadClient.callback = object : NotepadClient.Callback {
 
 ## Import offline memo
 
-TODO
+`memo`s are saved during `NotepadMode.Common`. `memo` consists of `NotePenPointer`s with positive pressure & accurate timestamp.
+
+`memo`s are saved in a *FIFO* queue. Usually we collect summary and loop to import each `memo`. 
+
+### Collect summary
+
+#### NotepadClient#getMemoSummary
+
+Get `memo`s' count, used space, .etc
+
+```kotlin
+notepadClient.getMemoSummary({
+    println("getMemoSummary success $it")
+}) {
+    println("getMemoSummary error $it")
+}
+```
+
+### Import a single memo
+
+#### NotepadClient#getMemoInfo
+
+Get the first `memo`'s info from the *FIFO* queue
+
+```kotlin
+notepadClient.getMemoInfo({
+    println("getMemoInfo success $it")
+}) {
+    println("getMemoInfo error $it")
+}
+```
+
+#### NotepadClient#importMemo
+
+Import the first `memo` from the *FIFO* queue
+
+```kotlin
+notepadClient.importMemo({
+    println("importMemo progress $it")
+}, {
+    println("importMemo success $it")
+}) {
+    println("importMemo error $it")
+}
+```
+
+#### ### NotepadClient#deleteMemo
+
+Delete the first `memo` from the *FIFO* queue
+
+```kotlin
+notepadClient.deleteMemo({
+    println("deleteMemo complete")
+}) {
+    println("deleteMemo error $it")
+}
+```
 
 ## Get notepad info
 
