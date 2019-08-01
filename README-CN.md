@@ -71,11 +71,11 @@ notepadClient.disclaimAuth({
 
 - NotepadMode.Common
 
-    设备仅保存压力>0的`NotePenPointer`到离线字迹中 
+    设备仅保存压力>0的`NotePenPointer`（含时间戳）到**离线字迹**中 
     
 - NotepadMode.Sync
 
-    设备发送所有`NotePenPointer`到连接的手机/Pad上
+    设备发送所有`NotePenPointer`（无时间戳）到连接的**手机/Pad**上
 
 设备默认为`NotepadMode.Common`（连接/未连接），只有连接后`setMode`才会更改
 
@@ -102,7 +102,63 @@ notepadClient.callback = object : NotepadClient.Callback {
 
 ## 导入离线字迹
 
-TODO
+`离线字迹`保存于`NotepadMode.Common`。`离线字迹`由压力>0的`NotePenPointer`（含时间戳）组成
+
+`离线字迹`保存在*FIFO*队列中。通常我们先获取队列摘要，然后循环导入各个`离线字迹` 
+
+### 获取队列摘要
+
+#### NotepadClient#getMemoSummary
+
+获取队列的数量、占用空间等
+
+```kotlin
+notepadClient.getMemoSummary({
+    println("getMemoSummary success $it")
+}) {
+    println("getMemoSummary error $it")
+}
+```
+
+### 导入单个离线笔迹
+
+#### NotepadClient#getMemoInfo
+
+获取*FIFO*队列中第一个`离线笔迹`的信息
+
+```kotlin
+notepadClient.getMemoInfo({
+    println("getMemoInfo success $it")
+}) {
+    println("getMemoInfo error $it")
+}
+```
+
+#### NotepadClient#importMemo
+
+导入*FIFO*队列中第一个`离线笔迹`
+
+```kotlin
+notepadClient.importMemo({
+    println("importMemo progress $it")
+}, {
+    println("importMemo success $it")
+}) {
+    println("importMemo error $it")
+}
+```
+
+#### ### NotepadClient#deleteMemo
+
+删除*FIFO*队列中第一个`离线笔迹`
+
+```kotlin
+notepadClient.deleteMemo({
+    println("deleteMemo complete")
+}) {
+    println("deleteMemo error $it")
+}
+```
 
 ## 获取设备信息
 
