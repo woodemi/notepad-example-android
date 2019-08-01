@@ -148,7 +148,7 @@ notepadClient.importMemo({
 }
 ```
 
-#### ### NotepadClient#deleteMemo
+#### NotepadClient#deleteMemo
 
 删除*FIFO*队列中第一个`离线笔迹`
 
@@ -162,7 +162,69 @@ notepadClient.deleteMemo({
 
 ## 获取设备信息
 
-TODO
+### 笔迹范围
+
+```kotlin
+println("W: ${notepadClient.width}, H: ${notepadClient.height}")
+```
+
+### 设备名称
+
+```kotlin
+notepadClient.getDeviceName({
+    println("getDeviceName success $it")
+}) {
+    println("getDeviceName error $it")
+}
+
+notepadClient.setDeviceName("name", {
+    println("setDeviceName complete")
+}) {
+    println("setDeviceName error $it")
+}
+```
+
+### 电量信息
+
+```kotlin
+notepadClient.getBatteryInfo({
+    println("getBatteryInfo success $it")
+}) {
+    println("getBatteryInfo error $it")
+}
+```
+
+### 设备时钟
+
+```kotlin
+notepadClient.getDeviceDate({
+    println("getDeviceDate success $it")
+}) {
+    println("getDeviceDate error $it")
+}
+
+notepadClient.setDeviceDate(timestamp, {
+    println("getDeviceDate complete")
+}) {
+    println("getDeviceDate error $it")
+}
+```
+
+### 设备自动休眠时长
+
+```kotlin
+notepadClient.getAutoLockTime({
+    println("getAutoLockTime success $it")
+}) {
+    println("getAutoLockTime error $it")
+}
+
+notepadClient.setAutoLockTime(duration, {
+    println("setAutoLockTime complete")
+}) {
+    println("setAutoLockTime error $it")
+}
+```
 
 ## 升级设备固件
 

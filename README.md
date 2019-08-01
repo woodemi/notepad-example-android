@@ -148,7 +148,7 @@ notepadClient.importMemo({
 }
 ```
 
-#### ### NotepadClient#deleteMemo
+#### NotepadClient#deleteMemo
 
 Delete the first `memo` from the *FIFO* queue
 
@@ -162,7 +162,69 @@ notepadClient.deleteMemo({
 
 ## Get notepad info
 
-TODO
+### Paint Size
+
+```kotlin
+println("W: ${notepadClient.width}, H: ${notepadClient.height}")
+```
+
+### Device Name
+
+```kotlin
+notepadClient.getDeviceName({
+    println("getDeviceName success $it")
+}) {
+    println("getDeviceName error $it")
+}
+
+notepadClient.setDeviceName("name", {
+    println("setDeviceName complete")
+}) {
+    println("setDeviceName error $it")
+}
+```
+
+### Battery Info
+
+```kotlin
+notepadClient.getBatteryInfo({
+    println("getBatteryInfo success $it")
+}) {
+    println("getBatteryInfo error $it")
+}
+```
+
+### Device Date
+
+```kotlin
+notepadClient.getDeviceDate({
+    println("getDeviceDate success $it")
+}) {
+    println("getDeviceDate error $it")
+}
+
+notepadClient.setDeviceDate(timestamp, {
+    println("getDeviceDate complete")
+}) {
+    println("getDeviceDate error $it")
+}
+```
+
+### Auto-Lock Time
+
+```kotlin
+notepadClient.getAutoLockTime({
+    println("getAutoLockTime success $it")
+}) {
+    println("getAutoLockTime error $it")
+}
+
+notepadClient.setAutoLockTime(duration, {
+    println("setAutoLockTime complete")
+}) {
+    println("setAutoLockTime error $it")
+}
+```
 
 ## Upgrade firmware
 
