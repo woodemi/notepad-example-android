@@ -1,18 +1,18 @@
-English | [简体中文](./README-CN.md)
+[English](./README.md) | 简体中文
 
 # notepad-example-android
-Example for notepad-android-sdk
+Notepad SDK示例
 
-# Usage
-- Scan notepad
-- Connect notepad
-- Claim notepad
-- Sync notepen pointer
-- Import offline memo
-- Get notepad info
-- Upgrade firmware
+# 功能
+- 扫描设备
+- 连接设备
+- 绑定设备
+- 接收实时笔迹
+- 导入离线字迹
+- 获取设备信息
+- 升级设备固件
 
-## Scan notepad
+## 扫描设备
 
 ```kotlin
 val notepadScanner = NotepadScanner(context)
@@ -27,11 +27,11 @@ notepadScanner.startScan()
 notepadScanner.stopScan()
 ```
 
-## Connect notepad
+## 连接设备
 
-Connect to `result`, received from `NotepadScanner.Callback.onScanResult`
+连接从`NotepadScanner.Callback.onScanResult`中扫描到的`result`， 
 
-Parameter `authToken` is optional. `[0x00, 0x00, 0x00, 0x01]` will be use if missing
+参数`authToken`可选，不传则默认为`[0x00, 0x00, 0x00, 0x01]`
 
 ```kotlin
 NotepadConnector.callback = object : NotepadConnectorCallback {
@@ -47,9 +47,9 @@ NotepadConnector.connect(context, result, authToken)
 NotepadConnector.disconnect()
 ```
 
-## Claim notepad
+## 绑定设备
 
-Claim with `authToken`, the parameter of `NotepadConnector.connect`
+用`NotepadConnector.connect`的`authToken`绑定设备
 
 ```kotlin
 notepadClient.claimAuth({
@@ -65,18 +65,18 @@ notepadClient.disclaimAuth({
 })
 ```
 
-## Sync notepen pointer
+## 接收实时笔迹
 
 TODO
 
-## Import offline memo
+## 导入离线字迹
 
 TODO
 
-## Get notepad info
+## 获取设备信息
 
 TODO
 
-## Upgrade firmware
+## 升级设备固件
 
 TODO
