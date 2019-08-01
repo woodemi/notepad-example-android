@@ -19,17 +19,12 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 def anko_version = "0.10.8"
 
 dependencies {
+    implementation 'io.woodemi:NotepadKit-androidlib:2.3.6@aar'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation(name: 'NotepadKit-androidlib-2.3.5', ext: 'aar')
 
     // NotepadKit-androidlib depends on kotlin-stdlib & kotlinx-coroutines & kotlinx-serialization
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

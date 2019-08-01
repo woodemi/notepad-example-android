@@ -20,9 +20,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "https://raw.githubusercontent.com/woodemi/notepad-sdk-android/master/" }
         google()
         jcenter()
-        
     }
 }
 
