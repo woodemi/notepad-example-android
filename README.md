@@ -29,7 +29,7 @@ notepadScanner.stopScan()
 
 ## Connect notepad
 
-Connect to `result`, received from `NotepadScanner.Callback.onScanResult`
+Connect to `result`, received from `NotepadScanner.Callback#onScanResult`
 
 Parameter `authToken` is optional. `[0x00, 0x00, 0x00, 0x01]` will be use if missing
 
@@ -49,7 +49,7 @@ NotepadConnector.disconnect()
 
 ## Claim notepad
 
-Claim with `authToken`, the parameter of `NotepadConnector.connect`
+Claim with `authToken`, the parameter of `NotepadConnector#connect`
 
 ```kotlin
 notepadClient.claimAuth({
@@ -67,7 +67,38 @@ notepadClient.disclaimAuth({
 
 ## Sync notepen pointer
 
-TODO
+### NotepadClient#setMode
+
+- NotepadMode.Common
+
+    Notepad saves only `NotePenPointer` with positive pressure into *offline memo* 
+    
+- NotepadMode.Sync
+
+    Notepad notify each `NotePenPointer`, positive or not, to connected *mobile device*
+
+Notepad is always `NotepadMode.Common` (connected or disconnected), unless `setMode` after connected
+
+```kotlin
+notepadClient.setMode(NotepadMode.Sync, {
+    println("setMode complete")
+}) {
+    println("setMode error $it")
+}
+```
+
+### NotepadClient.Callback#handlePointer
+
+Receive `NotePenPointer`s in `NotepadMode.Sync`
+
+```kotlin
+notepadClient.callback = object : NotepadClient.Callback {
+    override fun handlePointer(list: List<NotePenPointer>) {
+        println("handlePointer ${list.size}")
+    }
+    // ...
+}
+```
 
 ## Import offline memo
 

@@ -29,7 +29,7 @@ notepadScanner.stopScan()
 
 ## 连接设备
 
-连接从`NotepadScanner.Callback.onScanResult`中扫描到的`result`， 
+连接从`NotepadScanner.Callback#onScanResult`中扫描到的`result`， 
 
 参数`authToken`可选，不传则默认为`[0x00, 0x00, 0x00, 0x01]`
 
@@ -49,7 +49,7 @@ NotepadConnector.disconnect()
 
 ## 绑定设备
 
-用`NotepadConnector.connect`的`authToken`绑定设备
+用`NotepadConnector#connect`的`authToken`绑定设备
 
 ```kotlin
 notepadClient.claimAuth({
@@ -67,7 +67,38 @@ notepadClient.disclaimAuth({
 
 ## 接收实时笔迹
 
-TODO
+### NotepadClient#setMode
+
+- NotepadMode.Common
+
+    设备仅保存压力>0的`NotePenPointer`到离线字迹中 
+    
+- NotepadMode.Sync
+
+    设备发送所有`NotePenPointer`到连接的手机/Pad上
+
+设备默认为`NotepadMode.Common`（连接/未连接），只有连接后`setMode`才会更改
+
+```kotlin
+notepadClient.setMode(NotepadMode.Sync, {
+    println("setMode complete")
+}) {
+    println("setMode error $it")
+}
+```
+
+### NotepadClient.Callback#handlePointer
+
+当`NotepadMode.Sync`时，接收`NotePenPointer`
+
+```kotlin
+notepadClient.callback = object : NotepadClient.Callback {
+    override fun handlePointer(list: List<NotePenPointer>) {
+        println("handlePointer ${list.size}")
+    }
+    // ...
+}
+```
 
 ## 导入离线字迹
 
