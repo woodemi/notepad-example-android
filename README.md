@@ -25,3 +25,23 @@ notepadScanner.startScan()
 // ...
 notepadScanner.stopScan()
 ```
+
+## Connect notepad
+
+Connect to `result`, received from `NotepadScanner.Callback.onScanResult`
+
+Parameter `authToken` is optional. `[0x00, 0x00, 0x00, 0x01]` will be use if missing
+
+```kotlin
+NotepadConnector.callback = object : NotepadConnectorCallback {
+    override fun onConnectionStateChange(notepadClient: NotepadClient, state: ConnectionState) {
+        println("onConnectionStateChange $state")
+    }
+    // ...
+}
+
+val authToken = null
+NotepadConnector.connect(context, result, authToken)
+// ...
+NotepadConnector.disconnect()
+```

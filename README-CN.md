@@ -26,3 +26,23 @@ notepadScanner.startScan()
 // ...
 notepadScanner.stopScan()
 ```
+
+## 连接设备
+
+连接从`NotepadScanner.Callback.onScanResult`中扫描到的`result`， 
+
+参数`authToken`可选，不传则默认为`[0x00, 0x00, 0x00, 0x01]`
+
+```kotlin
+NotepadConnector.callback = object : NotepadConnectorCallback {
+    override fun onConnectionStateChange(notepadClient: NotepadClient, state: ConnectionState) {
+        println("onConnectionStateChange $state")
+    }
+    // ...
+}
+
+val authToken = null
+NotepadConnector.connect(context, result, authToken)
+// ...
+NotepadConnector.disconnect()
+```
