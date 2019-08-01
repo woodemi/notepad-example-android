@@ -64,3 +64,19 @@ notepadClient.disclaimAuth({
     println("disclaimAuth error $it")
 })
 ```
+
+## 接收实时笔迹
+
+TODO
+
+## 导入离线字迹
+
+TODO
+
+## 获取设备信息
+
+TODO
+
+## 升级设备固件
+
+TODO

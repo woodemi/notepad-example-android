@@ -10,6 +10,7 @@ Example for notepad-android-sdk
 - Sync notepen pointer
 - Import offline memo
 - Get notepad info
+- Upgrade firmware
 
 ## Scan notepad
 
@@ -63,3 +64,19 @@ notepadClient.disclaimAuth({
     println("disclaimAuth error $it")
 })
 ```
+
+## Sync notepen pointer
+
+TODO
+
+## Import offline memo
+
+TODO
+
+## Get notepad info
+
+TODO
+
+## Upgrade firmware
+
+TODO
