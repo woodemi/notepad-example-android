@@ -84,6 +84,9 @@ class NotepadDetailActivity : AppCompatActivity() {
                     runOnUiThread { toast("deleteMemo error $it") }
                 }
             }
+            button("getSize").onClick {
+                toast("W: ${notepadClient.width}, H: ${notepadClient.height}")
+            }
             button("getDeviceName").onClick {
                 notepadClient.getDeviceName({
                     runOnUiThread { toast("getDeviceName success $it") }
@@ -136,8 +139,15 @@ class NotepadDetailActivity : AppCompatActivity() {
                     runOnUiThread { toast("setAutoLockTime error $it") }
                 }
             }
-            button("getSize").onClick {
-                toast("W: ${notepadClient.width}, H: ${notepadClient.height}")
+            button("upgrade").onClick {
+                val directory = filesDir
+                notepadClient.upgrade("${directory.path}/upgrade.srec", Version(0xFF, 0xFF, 0xFF), {
+                    println("upgrade progress $it")
+                }, {
+                    runOnUiThread { toast("upgrade complete") }
+                }, {
+                    runOnUiThread { toast("upgrade error $it") }
+                })
             }
         }
     }
