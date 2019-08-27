@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "io.woodemi.notepad.example"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -22,7 +22,7 @@ android {
 def anko_version = "0.10.8"
 
 dependencies {
-    implementation 'io.woodemi:NotepadKit-androidlib:2.3.6@aar'
+    implementation 'io.woodemi:NotepadKit-androidlib:2.3.7@aar'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
