@@ -1,5 +1,6 @@
 package io.woodemi.notepad.example
 
+import android.Manifest
 import android.R
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -18,8 +19,17 @@ import org.jetbrains.anko.frameLayout
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.startActivity
+import pub.devrel.easypermissions.AfterPermissionGranted
+import pub.devrel.easypermissions.EasyPermissions
 
 private const val TAG = "MainActivity"
+
+/**
+ * Request code for [fine] & [coarse]
+ */
+const val RC_FINE_AND_COARSE = 0
+const val fine = Manifest.permission.ACCESS_FINE_LOCATION
+const val coarse = Manifest.permission.ACCESS_COARSE_LOCATION
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,9 +50,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun ensurePermission(block: () -> Unit) {
+        if (!EasyPermissions.hasPermissions(this, fine, coarse)) {
+            EasyPermissions.requestPermissions(this, "", RC_FINE_AND_COARSE, fine, coarse)
+        } else {
+            block()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
+
+    @AfterPermissionGranted(RC_FINE_AND_COARSE)
+    fun onGranted() {
+        notepadScanner.startScan()
+    }
+
     override fun onStart() {
         super.onStart()
-        notepadScanner.startScan()
+        ensurePermission {
+            notepadScanner.startScan()
+        }
     }
 
     override fun onStop() {
