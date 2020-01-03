@@ -204,9 +204,9 @@ notepadClient.getDeviceDate({
 }
 
 notepadClient.setDeviceDate(timestamp, {
-    println("getDeviceDate complete")
+    println("setDeviceDate complete")
 }) {
-    println("getDeviceDate error $it")
+    println("setDeviceDate error $it")
 }
 ```
 
