@@ -23,7 +23,7 @@ android {
 def anko_version = "0.10.8"
 
 dependencies {
-    implementation 'io.woodemi:NotepadKit-androidlib:2.3.9@aar'
+    implementation 'io.woodemi:NotepadKit-androidlib:2.3.10@aar'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
