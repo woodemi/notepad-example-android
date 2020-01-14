@@ -37,5 +37,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="setMode" />
+
+        <Button
+            android:id="@+id/get_memo_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getMemoSummary" />
+
+        <Button
+            android:id="@+id/get_memo_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getMemoInfo" />
+
+        <Button
+            android:id="@+id/import_memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="importMemo" />
+
+        <Button
+            android:id="@+id/delete_memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="deleteMemo" />
     </LinearLayout>
 </ScrollView>

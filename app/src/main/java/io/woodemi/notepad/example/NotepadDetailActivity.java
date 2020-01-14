@@ -76,6 +76,45 @@ public class NotepadDetailActivity extends AppCompatActivity implements View.OnC
                     return Unit.INSTANCE;
                 });
                 break;
+            case R.id.get_memo_summary:
+                notepadClient.getMemoSummary((memoSummary) -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getMemoSummary success " + memoSummary, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getMemoSummary error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.get_memo_info:
+                notepadClient.getMemoInfo((memoInfo) -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getMemoInfo success " + memoInfo, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getMemoInfo error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.import_memo:
+                notepadClient.importMemo(progress -> {
+                    Log.d(TAG, "importMemo progress " + progress);
+                    return Unit.INSTANCE;
+                }, memoData -> {
+                    runOnUiThread(() -> Toast.makeText(this, "importMemo success " + memoData, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "importMemo error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.delete_memo:
+                notepadClient.deleteMemo(() -> {
+                    runOnUiThread(() -> Toast.makeText(this, "deleteMemo complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "deleteMemo error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
         }
     }
 
