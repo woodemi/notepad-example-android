@@ -10,6 +10,7 @@ import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.woodemi.notepad.ConnectionState;
 import io.woodemi.notepad.NotePenPointer;
@@ -112,6 +113,71 @@ public class NotepadDetailActivity extends AppCompatActivity implements View.OnC
                     return Unit.INSTANCE;
                 }, failure -> {
                     runOnUiThread(() -> Toast.makeText(this, "deleteMemo error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.get_device_name:
+                notepadClient.getDeviceName((deviceName) -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getDeviceName success " + deviceName, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getDeviceName error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.set_device_name:
+                long remainder = System.currentTimeMillis() % 10;
+                notepadClient.setDeviceName("test" + remainder, () -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getDeviceName complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getDeviceName error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+            case R.id.get_battery_info:
+                notepadClient.getBatteryInfo((batteryInfo) -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getBatteryInfo success " + batteryInfo, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getBatteryInfo error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.get_device_date:
+                notepadClient.getDeviceDate((deviceDate) -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getDeviceDate success " + deviceDate, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getDeviceDate error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.set_device_date:
+                long oneHourLater = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1);
+                notepadClient.setDeviceDate(oneHourLater, () -> {
+                    runOnUiThread(() -> Toast.makeText(this, "setDeviceDate complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "setDeviceDate error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.get_auto_lock_time:
+                notepadClient.getAutoLockTime((autoLockTime) -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getAutoLockTime success " + autoLockTime, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "getAutoLockTime error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.set_auto_lock_time:
+                long oneHour = TimeUnit.HOURS.toSeconds(1);
+                notepadClient.setAutoLockTime((int) oneHour, () -> {
+                    runOnUiThread(() -> Toast.makeText(this, "setDeviceDate complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "setDeviceDate error " + failure, Toast.LENGTH_SHORT).show());
                     return Unit.INSTANCE;
                 });
                 break;
