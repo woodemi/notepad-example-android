@@ -18,6 +18,7 @@ import io.woodemi.notepad.NotepadConnector;
 import io.woodemi.notepad.NotepadConnectorCallback;
 import io.woodemi.notepad.NotepadMessage;
 import io.woodemi.notepad.NotepadScanResult;
+import kotlin.Unit;
 
 public class NotepadDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "NotepadDetailActivity";
@@ -46,6 +47,24 @@ public class NotepadDetailActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.disconnect:
                 NotepadConnector.INSTANCE.disconnect();
+                break;
+            case R.id.claim_auth:
+                notepadClient.claimAuth(() -> {
+                    runOnUiThread(() -> Toast.makeText(this, "claimAuth complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "claimAuth error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.disclaim_auth:
+                notepadClient.claimAuth(() -> {
+                    runOnUiThread(() -> Toast.makeText(this, "disclaimAuth complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "disclaimAuth error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
                 break;
         }
     }
