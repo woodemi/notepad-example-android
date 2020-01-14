@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="connect" />
+
+        <Button
+            android:id="@+id/disconnect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="disconnect" />
+
+        <Button
+            android:id="@+id/claim_auth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="claimAuth" />
+
+        <Button
+            android:id="@+id/disclaim_auth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="disclaimAuth" />
+
+        <Button
+            android:id="@+id/set_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="setMode" />
+
+        <Button
+            android:id="@+id/get_memo_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getMemoSummary" />
+
+        <Button
+            android:id="@+id/get_memo_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getMemoInfo" />
+
+        <Button
+            android:id="@+id/import_memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="importMemo" />
+
+        <Button
+            android:id="@+id/delete_memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="deleteMemo" />
+
+        <Button
+            android:id="@+id/get_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getSize" />
+
+        <Button
+            android:id="@+id/get_device_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getDeviceName" />
+
+        <Button
+            android:id="@+id/set_device_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="setDeviceName" />
+
+        <Button
+            android:id="@+id/get_battery_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getBatteryInfo" />
+
+        <Button
+            android:id="@+id/get_device_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getDeviceDate" />
+
+        <Button
+            android:id="@+id/set_device_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="setDeviceDate" />
+
+        <Button
+            android:id="@+id/get_auto_lock_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="getAutoLockTime" />
+
+        <Button
+            android:id="@+id/set_auto_lock_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="setAutoLockTime" />
+
+        <Button
+            android:id="@+id/upgrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="upgrade" />
+    </LinearLayout>
+</ScrollView>

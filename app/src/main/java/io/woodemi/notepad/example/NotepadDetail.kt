@@ -7,7 +7,7 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.util.concurrent.TimeUnit
 
-class NotepadDetailActivity : AppCompatActivity() {
+class NotepadDetail : AppCompatActivity() {
     companion object {
         const val EXTRA_SCAN_RESULT = "scan_result"
     }
@@ -167,8 +167,8 @@ class NotepadDetailActivity : AppCompatActivity() {
                 toast(state.javaClass.simpleName + cause)
             }
             if (state is ConnectionState.Connected) {
-                this@NotepadDetailActivity.notepadClient = notepadClient
-                notepadClient.callback = this@NotepadDetailActivity.clientCallback
+                this@NotepadDetail.notepadClient = notepadClient
+                notepadClient.callback = this@NotepadDetail.clientCallback
             } else if (state is ConnectionState.Disconnected) {
                 notepadClient.callback = null
             }
