@@ -23,6 +23,10 @@
         </activity>
 
         <activity
+            android:name=".NotepadDetail"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".NotepadDetailActivity"
             android:screenOrientation="portrait" />
     </application>
