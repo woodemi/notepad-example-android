@@ -20,6 +20,7 @@ import io.woodemi.notepad.NotepadConnectorCallback;
 import io.woodemi.notepad.NotepadMessage;
 import io.woodemi.notepad.NotepadMode;
 import io.woodemi.notepad.NotepadScanResult;
+import io.woodemi.notepad.Version;
 import kotlin.Unit;
 
 public class NotepadDetailActivity extends AppCompatActivity implements View.OnClickListener {
@@ -178,6 +179,20 @@ public class NotepadDetailActivity extends AppCompatActivity implements View.OnC
                     return Unit.INSTANCE;
                 }, failure -> {
                     runOnUiThread(() -> Toast.makeText(this, "setDeviceDate error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.upgrade:
+                String file = getFilesDir() + "/upgrade.srec";
+                Version version = new Version(0xFF, 0xFF, 0xFF);
+                notepadClient.upgrade(file, version, progress -> {
+                    Log.d(TAG, "upgrade progress " + progress);
+                    return Unit.INSTANCE;
+                }, () -> {
+                    runOnUiThread(() -> Toast.makeText(this, "upgrade complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, (failure) -> {
+                    runOnUiThread(() -> Toast.makeText(this, "upgrade error " + failure, Toast.LENGTH_SHORT).show());
                     return Unit.INSTANCE;
                 });
                 break;
