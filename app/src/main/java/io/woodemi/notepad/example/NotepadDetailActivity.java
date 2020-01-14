@@ -17,6 +17,7 @@ import io.woodemi.notepad.NotepadClient;
 import io.woodemi.notepad.NotepadConnector;
 import io.woodemi.notepad.NotepadConnectorCallback;
 import io.woodemi.notepad.NotepadMessage;
+import io.woodemi.notepad.NotepadMode;
 import io.woodemi.notepad.NotepadScanResult;
 import kotlin.Unit;
 
@@ -63,6 +64,15 @@ public class NotepadDetailActivity extends AppCompatActivity implements View.OnC
                     return Unit.INSTANCE;
                 }, failure -> {
                     runOnUiThread(() -> Toast.makeText(this, "disclaimAuth error " + failure, Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                });
+                break;
+            case R.id.set_mode:
+                notepadClient.setMode(NotepadMode.Sync, () -> {
+                    runOnUiThread(() -> Toast.makeText(this, "setMode complete", Toast.LENGTH_SHORT).show());
+                    return Unit.INSTANCE;
+                }, failure -> {
+                    runOnUiThread(() -> Toast.makeText(this, "setMode error " + failure, Toast.LENGTH_SHORT).show());
                     return Unit.INSTANCE;
                 });
                 break;
