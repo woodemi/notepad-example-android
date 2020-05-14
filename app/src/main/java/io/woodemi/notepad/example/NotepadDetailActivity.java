@@ -38,6 +38,21 @@ public class NotepadDetailActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_notepad_detail);
         findViewById(R.id.connect).setOnClickListener(this);
         findViewById(R.id.disconnect).setOnClickListener(this);
+        findViewById(R.id.claim_auth).setOnClickListener(this);
+        findViewById(R.id.disclaim_auth).setOnClickListener(this);
+        findViewById(R.id.set_mode).setOnClickListener(this);
+        findViewById(R.id.get_memo_summary).setOnClickListener(this);
+        findViewById(R.id.get_memo_info).setOnClickListener(this);
+        findViewById(R.id.import_memo).setOnClickListener(this);
+        findViewById(R.id.delete_memo).setOnClickListener(this);
+        findViewById(R.id.get_device_name).setOnClickListener(this);
+        findViewById(R.id.set_device_name).setOnClickListener(this);
+        findViewById(R.id.get_battery_info).setOnClickListener(this);
+        findViewById(R.id.get_device_date).setOnClickListener(this);
+        findViewById(R.id.set_device_date).setOnClickListener(this);
+        findViewById(R.id.get_auto_lock_time).setOnClickListener(this);
+        findViewById(R.id.set_auto_lock_time).setOnClickListener(this);
+        findViewById(R.id.upgrade).setOnClickListener(this);
 
         NotepadConnector.callback = connectionCallback;
     }
